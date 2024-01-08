@@ -32,7 +32,7 @@ async function login(request, response) {
         return response
         .status(201)
         .json({
-            message: 'User created successfully', 
+            message: 'User logged in successfully!', 
             data: {
                 token,
                 user: user.json(),

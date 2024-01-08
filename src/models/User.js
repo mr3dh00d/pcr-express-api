@@ -28,6 +28,25 @@ class User {
             db.query('SELECT * FROM users WHERE email = ?', [email], function (error, results, fields) {
                 if (error) {
                     reject(error);
+                }
+                else if (results.length === 0) {
+                    resolve(null);
+                } else {
+                    const user = new User(results[0]);
+                    resolve(user);
+                }
+            });
+        });
+    }
+
+    static findByUsername(username) {
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM users WHERE username = ?', [username], function (error, results, fields) {
+                if (error) {
+                    reject(error);
+                }
+                else if (results.length === 0) {
+                    resolve(null);
                 } else {
                     const user = new User(results[0]);
                     resolve(user);

@@ -16,17 +16,22 @@ async function signin(request, response) {
         } = request.body;
     
         if(!name || !username || !email || !password || !repeat_password) {
-            return response.status(400).json({ message: 'Missing fields' });
+            return response.status(400).json({ message: 'Faltan parámetros' });
         }
     
         if(password !== repeat_password) {
-            return response.status(400).json({ message: 'Passwords do not match' });
+            return response.status(400).json({ message: 'Las contraseñas no coinciden' });
         }
     
-        const user = await User.findByEmail(email);
+        let user = await User.findByEmail(email);
         if (user) {
-            return response.status(400).json({ message: 'User already exists' });
+            return response.status(400).json({ message: 'El email ya está en uso' });
         }
+        user = await User.findByUsername(username);
+        if (user) {
+            return response.status(400).json({ message: 'El nombre de usuario ya está en uso'});
+        }
+
         
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
