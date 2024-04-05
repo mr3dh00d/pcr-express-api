@@ -2,8 +2,7 @@ const User = require("../models/User");
 const jwt = require('jsonwebtoken');
 
 
-async function authMiddleware(request, response, next)
-{
+async function authMiddleware(request, response, next) {
     const authHeader = request.headers.authorization;
     if (!authHeader) {
         return response.status(401).json({ message: 'Missing authorization header' });
@@ -21,7 +20,9 @@ async function authMiddleware(request, response, next)
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const { id } = decoded;
-        const user = await User.findById(id);
+        const user = await User
+            .findById(id)
+            .catch((err) => { throw err })
         if (!user) {
             return response.status(401).json({ message: 'Invalid token' });
         }

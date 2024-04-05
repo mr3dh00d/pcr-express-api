@@ -10,6 +10,13 @@ async function create(request, response) {
             user_id,
         } = request.body;
 
+        console.log({
+            description,
+            score,
+            movie_id,
+            user_id,
+        });
+
         if(!description || !score || !movie_id || !user_id) {
             return response.status(400).json({ message: 'Faltan campos por completar' });
         }

@@ -78,6 +78,7 @@ class User {
             password
         }, function (error, results, fields) {
             if (error) throw error;
+            this.id = results.insertId;
             return results;
         });
     }
