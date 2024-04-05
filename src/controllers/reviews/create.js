@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Review = require('../../models/Reviw');
+const Review = require('../../models/Review');
 
 async function create(request, response) {
     try {

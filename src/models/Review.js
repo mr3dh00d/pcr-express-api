@@ -28,7 +28,7 @@ class Review {
     
     static getAll() {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM reviews', async function (error, results, fields) {
+            db.query('SELECT * FROM reviews ORDER BY created_at DESC', async function (error, results, fields) {
                 if (error) {
                     reject(error);
                 } else {

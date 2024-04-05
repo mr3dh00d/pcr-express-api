@@ -1,4 +1,4 @@
-const Review = require('../../models/Reviw');
+const Review = require('../../models/Review');
 
 const router = require('express').Router();
 
