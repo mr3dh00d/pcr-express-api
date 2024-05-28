@@ -26,11 +26,11 @@ Para iniciar el servidor, usa el comando `npm start`. Esto iniciará el servidor
 
 Para iniciar el servidor en modo de desarrollo (con nodemon), usa el comando `npm run watch`.
 
-Endpoints
-Autenticación
-POST `/api/auth/signin`: Registra un nuevo usuario.
-POST `/api/auth/login`: Inicia sesión con un usuario existente.
-Reseñas
-GET `/api/reviews/:id?`: Obtiene todas las reseñas o una reseña específica por ID.
-POST `/api/reviews/create`: Crea una nueva reseña. Requiere autenticación.
+## Endpoints
+###  Autenticación
+- POST `/api/auth/signin`: Registra un nuevo usuario.
+- POST `/api/auth/login`: Inicia sesión con un usuario existente.
+###  Reseñas
+- GET `/api/reviews/:id?`: Obtiene todas las reseñas o una reseña específica por ID.
+- POST `/api/reviews/create`: Crea una nueva reseña. Requiere autenticación.
 
